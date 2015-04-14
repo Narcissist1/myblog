@@ -10,11 +10,18 @@ def getRecentPosts(self):
 
 	return render_to_response('posts.html',{'posts':sorted_post})
 
-def getPost(self,selected_page=1):
-	post =Post.objects.all.order_by('-pub_date')
+def getPosts(self,selected_page=1):
+	post =Post.objects.all().order_by('-pub_date')
 
 	pages=Paginator(post,5)
+	try:
+		return_page=pages.page(selected_page)
+	except:
+		return_page=pages.page(pages.num_pages)
+	#display all posts
+	return render_to_response('posts.html',{'posts':return_page.object_list,'page':return_page})
 
-	return_page=pages.page(selected_page)
-
-	return render_to_response('post.html',{'posts':return_page.object_list})
+def getPost(self,postSlug):
+	post=Post.objects.filter(slug=postSlug)
+	#display specified post
+	return render_to_response('posts.html',{'posts':post})
