@@ -10,5 +10,5 @@ urlpatterns = patterns('',
     url(r'^admin/',include(admin.site.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$','blogengine.views.getRecentPosts'),
-    url(r'^(?P<selected_page>\d+)/?$','blogengine.views.getRecentPosts'),
+    url(r'^(?P<selected_page>\d+)/?$','blogengine.views.getPosts'),
 )
