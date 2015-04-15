@@ -28,6 +28,7 @@ TEMPLATE_DIRS=("/Users/Mr_ren/Documents/djcode/myblog/templates",)
 
 ALLOWED_HOSTS = []
 
+SITE_ID = 1
 
 # Application definition
 
@@ -39,6 +40,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'blogengine',
+    'django.contrib.flatpages',
+    'django.contrib.sites',
 )
 
 MIDDLEWARE_CLASSES = (
