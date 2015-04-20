@@ -24,4 +24,4 @@ def getPosts(self,selected_page=1):
 def getPost(self,postSlug):
 	post=Post.objects.filter(slug=postSlug)
 	#display specified post
-	return render_to_response('posts.html',{'posts':post})
+	return render_to_response('single.html',{'posts':post})
