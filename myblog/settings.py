@@ -42,6 +42,8 @@ INSTALLED_APPS = (
     'blogengine',
     'django.contrib.flatpages',
     'django.contrib.sites',
+    'django.contrib.comments',
+    'django.contrib.syndication',
 )
 
 MIDDLEWARE_CLASSES = (

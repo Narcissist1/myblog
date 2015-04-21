@@ -1,6 +1,8 @@
 from django.shortcuts import render_to_response
 from models import Post,Category
 from django.core.paginator import Paginator,EmptyPage
+from django.template import RequestContext
+from django.contrib.syndication.views import Feed
 # Create your views here.
 
 def getPosts(self,selected_page=1):
@@ -14,10 +16,10 @@ def getPosts(self,selected_page=1):
 	#display all posts
 	return render_to_response('posts.html',{'posts':return_page.object_list,'page':return_page})
 
-def getPost(self,postSlug):
+def getPost(request,postSlug):
 	post=Post.objects.filter(slug=postSlug)
 	#display specified post
-	return render_to_response('single.html',{'posts':post})
+	return render_to_response('single.html',{'posts':post},context_instance=RequestContext(request))
 
 def getCategory(request,categorySlug,selected_page=1):
 	posts =Post.objects.all().order_by('-pub_date')
@@ -38,3 +40,17 @@ def getCategory(request,categorySlug,selected_page=1):
 
 	# Display all the posts
 	return render_to_response('category.html', {'posts': returned_page.object_list, 'page': returned_page, 'category': category})
+
+class PostsFeed(Feed):
+    title = "My Django Blog posts"
+    link = "feeds/posts/"
+    description = "Posts from My Django Blog"
+
+    def items(self):
+        return Post.objects.order_by('-pub_date')[:5]
+
+    def item_title(self, item):
+        return item.title
+
+    def item_description(self, item):
+        return item.text
