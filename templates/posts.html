@@ -1,14 +1,18 @@
 {% include 'header.html' %}
         {% load comments %}
         {% if posts %}
+        <div class="container-fluid">
+                <div class="row">
         {% for post in posts %}
-        <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-        <h3>By {{post.author.first_name}} {{post.author.last_name}}</h3>
-        <h3>{{ post.pub_date }}</h3>
-        {{ post.text }}
-        {% get_comment_count for post as comment_count %}
-        <h3>Comments: {{ comment_count }}</h3>
-        {% endfor %}
+                <h1><a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a></h1>
+                <h3>By {{post.author.first_name}} {{post.author.last_name}}</h3>
+                <h3>{{ post.pub_date }}</h3>
+                {{ post.text }}
+                {% get_comment_count for post as comment_count %}
+                <h3>Comments: {{ comment_count }}</h3>
+                {% endfor %}
+        </div>
+        </div>
         <br />
         {% if page.has_previous %}
         <a href="/{{ page.previous_page_number }}/">Previous Page</a>
