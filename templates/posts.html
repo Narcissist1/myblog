@@ -1,7 +1,7 @@
 {% include 'header.html' %}
         {% load comments %}
         {% if posts %}
-        <div class="container-fluid">
+        <div class="container">
                 <div class="row">
         {% for post in posts %}
                 <h1><a href="{{ post.get_absolute_url }}"><strong>{{ post.title }}</strong></a></h1>
@@ -11,7 +11,6 @@
                 {% get_comment_count for post as comment_count %}
                 <h3>Comments: {{ comment_count }}</h3>
                 {% endfor %}
-        </div>
         </div>
         <br />
         {% if page.has_previous %}
@@ -23,4 +22,5 @@
         {% else %}
         <p>No posts matched</p>
         {% endif %}
+</div>
 {% include 'footer.html' %}
