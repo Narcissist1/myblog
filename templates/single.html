@@ -6,7 +6,7 @@
             {% for post in posts %}
             <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
             {{ post.text }}
-             <h3>By {{ post.author.first_name }} {{ post.author.last_name }}</h3>
+             <h3>{{post.pub_date}} by {{ post.author.first_name }} {{ post.author.last_name }}</h3>
             <h3>Categories: {% for category in post.categories.all %} {{ category.title }} 
                     {% endfor %}</h3>
             {% get_comment_count for post as comment_count %}
