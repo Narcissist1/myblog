@@ -13,12 +13,30 @@
                 {% endfor %}
         </div>
         <br />
-        {% if page.has_previous %}
-        <a href="/{{ page.previous_page_number }}/">Previous Page</a>
-        {% endif %}
-        {% if page.has_next %}
-        <a href="/{{ page.next_page_number }}/">Next Page</a>
-        {% endif %}
+
+        <nav>
+          <ul class="pagination">
+                <li>
+                {% if page.has_previous %}
+                 <a href="/{{ page.previous_page_number }}/" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                </a>
+                {% endif %}
+                </li>
+                <li><a href="/{{ 1 }}/">1</a></li>
+                <li><a href="/{{ 2 }}/">2</a></li>
+                <li><a href="/{{ 3 }}/">3</a></li>
+                <li><a href="/{{ 4 }}/">4</a></li>
+                <li><a href="/{{ 5 }}/">5</a></li>
+                <li>
+                {% if page.has_next %}
+                <a href="/{{ page.next_page_number }}/" aria-label="Next">
+                <span aria-hidden="true">&raquo;</span>
+                </a>
+                {% endif %}
+                </li>
+                </ul>
+        </nav>
         {% else %}
         <p>No posts matched</p>
         {% endif %}
