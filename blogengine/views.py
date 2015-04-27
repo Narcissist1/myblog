@@ -4,6 +4,7 @@ from django.core.paginator import Paginator,EmptyPage
 from django.template import RequestContext
 from django.contrib.syndication.views import Feed
 from django.views.decorators.csrf import csrf_exempt
+from django.db.models import Q
 # Create your views here.
 
 def getPosts(self,selected_page=1):
@@ -26,9 +27,9 @@ def getPost(request,postSlug):
 def search_post(request):
 	if request.method == "POST":
 		value=request.POST.get('value')
-		post=Post.objects.filter(slug=value)
-
-		return render(request,'single.html',{'posts':post})
+		# post=Post.objects.filter(slug=value)
+		results = Post.objects.filter(Q(title__icontains=value) | Q(text__icontains=value)).order_by('pub_date')
+		return render(request,'single.html',{'posts':results})
 
 def getCategory(request,categorySlug,selected_page=1):
 	posts =Post.objects.all().order_by('-pub_date')
