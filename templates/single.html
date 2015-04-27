@@ -1,5 +1,5 @@
 {% include 'header.html' %}
-        {% load comments %}
+        <!-- {% load comments %} -->
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-8">
@@ -9,7 +9,7 @@
              <h3>By {{ post.author.first_name }} {{ post.author.last_name }}</h3>
             <h3>Categories: {% for category in post.categories.all %} {{ category.title }} 
                     {% endfor %}</h3>
-            {% get_comment_count for post as comment_count %}
+            <!-- {% get_comment_count for post as comment_count %}
             <h3>Comments: {{ comment_count }}</h3>
             <ol>
             {% get_comment_list for post as comments %}
@@ -25,8 +25,23 @@
             {% endif %}
             {% if page.has_next %}
             <a href="/{{ page.next_page_number }}/">Next Page</a>
-            {% endif %}
+            {% endif %} -->
+
+            <div id="disqus_thread"></div>
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'm6106918';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
         </div>
+
         <div class="col-xs-6 col-md-4">
             <div class="container">
                 <ul>
@@ -38,4 +53,18 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES * * */
+    var disqus_shortname = 'm6106918';
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
+
 {% include 'footer.html' %}
