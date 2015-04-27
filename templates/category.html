@@ -1,4 +1,7 @@
 {% include 'header.html' %}
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12 col-md-8">
         <h1>Posts for {{ category.title }}</h1>
         {% load comments %}
         {% if posts %}
@@ -18,4 +21,7 @@
         {% else %}
         <p>No posts matched</p>
         {% endif %}
+        </div>
+</div>
+</div>
 {% include 'footer.html' %}
