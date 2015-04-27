@@ -21,6 +21,8 @@ urlpatterns = patterns('',
     url(r'^categories/(?P<categorySlug>\w+)/(?P<selected_page>\d+)/?$','blogengine.views.getCategory'),
     # Comments
     url(r'^comments/', include('django.contrib.comments.urls')),
+    #Search
+    url(r'^search/$','blogengine.views.search_post'),
     # RSS feeds
     url(r'^feeds/posts/$', PostsFeed()),
     #Flat pages

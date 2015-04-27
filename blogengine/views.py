@@ -1,8 +1,9 @@
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,render
 from models import Post,Category
 from django.core.paginator import Paginator,EmptyPage
 from django.template import RequestContext
 from django.contrib.syndication.views import Feed
+from django.views.decorators.csrf import csrf_exempt
 # Create your views here.
 
 def getPosts(self,selected_page=1):
@@ -20,6 +21,14 @@ def getPost(request,postSlug):
 	post=Post.objects.filter(slug=postSlug)
 	#display specified post
 	return render_to_response('single.html',{'posts':post},context_instance=RequestContext(request))
+
+@csrf_exempt
+def search_post(request):
+	if request.method == "POST":
+		value=request.POST.get('value')
+		post=Post.objects.filter(slug=value)
+
+		return render(request,'single.html',{'posts':post})
 
 def getCategory(request,categorySlug,selected_page=1):
 	posts =Post.objects.all().order_by('-pub_date')
