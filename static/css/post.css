@@ -1,3 +1,16 @@
 body { 
     padding-top: 65px; 
 }
+.navbar{
+	background: #585858;
+}
+.row{
+	margin:0 50px;
+	max-width: 1200px;
+}
+h1{
+	font-family: 'Oswald', sans-serif;
+}
+.collapse navbar-collapse{
+	color:white;
+}

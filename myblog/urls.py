@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     #Categories
     url(r'^categories/(?P<categorySlug>\w+)/?$','blogengine.views.getCategory'),
     url(r'^categories/(?P<categorySlug>\w+)/(?P<selected_page>\d+)/?$','blogengine.views.getCategory'),
-    # Comments
+    #Comments
     url(r'^comments/', include('django.contrib.comments.urls')),
     #Search
     url(r'search/$','blogengine.views.search_post'),
