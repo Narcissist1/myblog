@@ -5,6 +5,7 @@ from django.template import RequestContext
 from django.contrib.syndication.views import Feed
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Q
+from django.shortcuts import redirect
 # Create your views here.
 
 def getPosts(self,selected_page=1):
@@ -25,8 +26,8 @@ def getPost(request,postSlug):
 
 @csrf_exempt
 def search_post(request):
-	if request.method == "POST":
-		value=request.POST.get('value')
+	if request.method == "GET":
+		value=request.GET.get('value')
 		# post=Post.objects.filter(slug=value)
 		results = Post.objects.filter(Q(title__icontains=value) | Q(text__icontains=value)).order_by('pub_date')
 		return render(request,'single.html',{'posts':results})

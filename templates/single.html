@@ -3,13 +3,17 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-md-8">
-            {% for post in posts %}
+            {% if posts %}
+            {%for post in posts%}
             <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
             {{ post.text }}
              <h3>By {{ post.author.first_name }} {{ post.author.last_name }}</h3>
             <h3>Categories: {% for category in post.categories.all %} {{ category.title }} 
             {% endfor %}</h3>
-            {% endfor %}
+            {%endfor%}
+            {%else%}
+            <h1>No Match Post!</h1>
+            {% endif%}
             <div id="disqus_thread"></div>
 <script type="text/javascript">
     /* * * CONFIGURATION VARIABLES * * */
