@@ -5,6 +5,7 @@
                 <div class="row">
                 {% for post in posts %}
                 <h1><a href="{{ post.get_absolute_url }}#disqus_thread"><strong>{{ post.title }}</strong></a></h1>
+                <hr>
                 <h3>By {{post.author.first_name}} {{post.author.last_name}}</h3>
                 <h3>{{ post.pub_date }}</h3>
                 <p>{{ post.text }}</p>

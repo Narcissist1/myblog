@@ -1,13 +1,14 @@
 {% include 'header.html' %}
         <!-- {% load comments %} -->
 <div class="container">
-    <div class="row">
+    <div class="row vdivide">
         <div class="col-xs-12 col-md-8">
             {% if posts %}
             {%for post in posts%}
             <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+            <h3>By {{ post.author.first_name }} {{ post.author.last_name }}</h3>
+            <hr>
             {{ post.text }}
-             <h3>By {{ post.author.first_name }} {{ post.author.last_name }}</h3>
             <h3>Categories: {% for category in post.categories.all %} {{ category.title }} 
             {% endfor %}</h3>
             {%endfor%}
@@ -30,7 +31,7 @@
         </div>
 
         <div class="col-xs-6 col-md-4">
-            <div class="container">
+            <div class="sidebar">
                 <ul>
                     <li>something else here just for test</li>
                     <li>asdasd</li>

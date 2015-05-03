@@ -14,3 +14,8 @@ h1{
 .collapse .navbar-collapse{
 	color:#999;
 }
+.sidebar{
+	margin: 120px 0 0 0;
+	background: #E6E6E6;
+	border-radius: 10px;
+}
