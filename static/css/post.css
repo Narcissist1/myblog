@@ -11,6 +11,6 @@ body {
 h1{
 	font-family: 'Oswald', sans-serif;
 }
-.collapse navbar-collapse{
-	color:white;
+.collapse .navbar-collapse{
+	color:#999;
 }

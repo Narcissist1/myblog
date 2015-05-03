@@ -1,0 +1,35 @@
+<!DOCTYPE htnl>
+{% load staticfiles %}
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="{% static "css/personalinfor.css" %}"/>
+	<title>Welcome</title>
+</head>
+<body>
+<header>
+	<img src="{% static "img/photo.png" %}">
+	<h1>Zack Ren</h1>
+	<span>
+		<ul target="nav">
+			<li target="nav"><a href="/">Home</a></li>
+			<li target="nav"><a href="/">Recent Post</a></li>
+			<li target="nav"><a href="https://github.com/Narcissist1/myblog">About</a></li>
+		</ul>
+	</span>
+</header>
+
+<div class="maintext">
+	<h2>About me</h2>
+	<p>My name is Zack Ren. I'm a student in Hong Kong now. welcome to visit my blog. This blog is builded by Django framework. It's for me to get familiar with python and some frond end design knowledge. And also for fun :)</p>
+
+	<h2>Some information about me</h2>
+	<p>
+		<ul>
+			<li>Email: m6106918@gmail.com</li>
+			<li>Phone number:5933 2483</li>
+			<li>Github:<a href="https://github.com/Narcissist1" class="here">Here</a></li>
+		</ul>
+	</p>
+</div>
+</body>
+</html>

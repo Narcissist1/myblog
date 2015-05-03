@@ -1,0 +1,44 @@
+html,body{
+	padding: 0;
+	margin: 0;
+}
+header{
+	height: 440px;
+	background: url("../img/background.jpg") no-repeat center center;
+  	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+  	background-size: cover;
+	text-align: center;
+	top:-50px;
+	color: white;
+}
+a{
+	color: black;
+}
+h1{
+	font-size: 30px;
+}
+ul[target]{
+	padding: 20px;
+	background: rgba(255,255,255,0.5);
+}
+li[target]{
+	display: inline;
+	padding: 0 20px 0 20px;
+}
+img{
+	position: relative;
+	margin: 40px 0 40px 0;
+	border: 7px solid white;
+	border-radius: 20px;
+	top:20px;
+}
+.here{
+	color: blue;
+}
+.maintext{
+	max-width: 500px;
+	padding: 20px;
+	margin: 0 auto;
+}

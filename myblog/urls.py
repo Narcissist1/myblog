@@ -23,6 +23,8 @@ urlpatterns = patterns('',
     url(r'^comments/', include('django.contrib.comments.urls')),
     #Search
     url(r'search/$','blogengine.views.search_post'),
+    #personal information
+    url(r'^myself/$','blogengine.views.infor_self'),
     # RSS feeds
     url(r'^feeds/posts/$', PostsFeed()),
     #Flat pages
