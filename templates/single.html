@@ -4,14 +4,16 @@
     <div class="row vdivide">
         <div class="col-xs-12 col-md-8">
             {% if posts %}
-            {%for post in posts%}
-            <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
-            <h3>By {{ post.author.first_name }} {{ post.author.last_name }}</h3>
-            <hr>
-            {{ post.text }}
-            <h3>Categories: {% for category in post.categories.all %} {{ category.title }} 
-            {% endfor %}</h3>
-            {%endfor%}
+            <div class"showmore">
+                {%for post in posts%}
+                <h1><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h1>
+                <h3>By {{ post.author.first_name }} {{ post.author.last_name }}</h3>
+                <hr>
+                {{ post.text }}
+                <h3>Categories: {% for category in post.categories.all %} {{ category.title }} 
+                {% endfor %}</h3>
+                {%endfor%}
+            </div>
             {%else%}
             <h1>No Match Post!</h1>
             {% endif%}
