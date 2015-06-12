@@ -1,11 +1,27 @@
-from django.shortcuts import render_to_response,render
+from django.shortcuts import render_to_response,render,redirect
 from models import Post,Category
 from django.core.paginator import Paginator,EmptyPage
 from django.template import RequestContext
 from django.contrib.syndication.views import Feed
 from django.views.decorators.csrf import csrf_exempt
+from django.http import HttpResponseRedirect
 from django.db.models import Q
+
+from weibo import APIClient
 # Create your views here.
+
+
+def Signin_weibo(self):
+	URL = 'http://codetheme.sinaapp.com'
+	APP_KEY = '3328471193'
+	APP_SECRET = '08c64d5a6a0e1caee7c2a0a8ef94eeb3'
+	CALLBACK_URL = 'http://127.0.0.1:8000/myself/'
+	# CALLBACK_URL = URL+'/myself/'
+	# CALLBACK_URL='http://open.weibo.com/apps/[id]/info/advanced'
+
+	client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
+	url = client.get_authorize_url()
+	return HttpResponseRedirect(url)
 
 def getPosts(self,selected_page=1):
 	post =Post.objects.all().order_by('-pub_date')

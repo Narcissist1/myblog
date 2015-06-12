@@ -13,6 +13,7 @@ class CategoryToPostInline(admin.TabularInline):
 class PostAdmin(admin.ModelAdmin):
 	prepopulated_fields = {"slug": ("title",)}
 	exclude=('author',)
+	# readonly_fields=('text',)
 	inlines = [CategoryToPostInline]
 
 	def save_model(self, request, obj, form, change):

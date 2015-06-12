@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from blogengine.views import PostsFeed
 
+
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -27,6 +28,8 @@ urlpatterns = patterns('',
     url(r'^myself/$','blogengine.views.infor_self'),
     # RSS feeds
     url(r'^feeds/posts/$', PostsFeed()),
+    #weibo singin
+    url(r'^/singin/$','blogengine.views.Signin_weibo',name='weibourl'),
     #Flat pages
     url(r'', include('django.contrib.flatpages.urls')),
 )
