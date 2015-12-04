@@ -1,7 +1,7 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from blogengine.views import PostsFeed
-
+from django.views.generic import TemplateView
 
 admin.autodiscover()
 
@@ -30,6 +30,9 @@ urlpatterns = patterns('',
     url(r'^feeds/posts/$', PostsFeed()),
     #weibo singin
     url(r'^/singin/$','blogengine.views.Signin_weibo',name='weibourl'),
+    #Event source
+    (r'^index/$', 'blogengine.views.index'),
+    (r'^eventsource/$', 'blogengine.views.eventsource'),
     #Flat pages
     url(r'', include('django.contrib.flatpages.urls')),
 )

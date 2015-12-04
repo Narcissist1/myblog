@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response,render,redirect
 from models import Post,Category
 from django.core.paginator import Paginator,EmptyPage
@@ -10,14 +11,30 @@ from django.db.models import Q
 from weibo import APIClient
 # Create your views here.
 
+import time
+
+from django.http import StreamingHttpResponse
+from django.utils.timezone import now
+
+
+def index(self):
+	return render_to_response('index.html')
+
+def eventsource(request):
+    response = StreamingHttpResponse(stream_generator(), content_type="text/event-stream")
+    response['Cache-Control'] = 'no-cache'
+    return response
+
+def stream_generator():
+	while True:
+		yield u'data: %s\n\n' % str(now())
+        time.sleep(10)
+
 
 def Signin_weibo(self):
-	URL = 'http://codetheme.sinaapp.com'
 	APP_KEY = '3328471193'
 	APP_SECRET = '08c64d5a6a0e1caee7c2a0a8ef94eeb3'
 	CALLBACK_URL = 'http://127.0.0.1:8000/myself/'
-	# CALLBACK_URL = URL+'/myself/'
-	# CALLBACK_URL='http://open.weibo.com/apps/[id]/info/advanced'
 
 	client = APIClient(app_key=APP_KEY, app_secret=APP_SECRET, redirect_uri=CALLBACK_URL)
 	url = client.get_authorize_url()
